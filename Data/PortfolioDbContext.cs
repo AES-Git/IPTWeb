@@ -18,7 +18,7 @@ public class PortfolioDbContext : DbContext
 
         modelBuilder.Entity<Holding>(entity =>
         {
-            entity.ToTable("Holdings");
+            entity.ToTable("holdings", "iptweb_dbo");
             
             entity.HasKey(e => e.Id);
             
