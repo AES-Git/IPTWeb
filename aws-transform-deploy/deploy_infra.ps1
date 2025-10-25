@@ -24,7 +24,7 @@ param(
     [int]$VolumeSize,
 
     # ECS Parameters
-    [string]$EcsClusterName
+    [string]$EcsClusterName = 'AWSTransform-Cluster-1-e86e72'
 )
 
 function Log {
