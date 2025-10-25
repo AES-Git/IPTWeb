@@ -18,7 +18,7 @@ public class PortfolioDbContext : DbContext
 
         modelBuilder.Entity<Holding>(entity =>
         {
-            entity.ToTable("Holdings");
+            entity.ToTable("holdings", "iptweb_dbo");
             
             entity.HasKey(e => e.Id);
             
@@ -51,7 +51,7 @@ public class PortfolioDbContext : DbContext
             entity.Property(e => e.LastPriceUpdate);
             
             entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasDefaultValueSql("NOW()");
 
             // Create index on Symbol for faster lookups
             entity.HasIndex(e => e.Symbol);
