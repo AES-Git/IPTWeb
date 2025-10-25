@@ -3,15 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InvestmentPortfolioTracker.Web.Models;
 
+[Table("holdings", Schema = "iptweb_dbo")]
 public class Holding
 {
     [Key]
+    [Column("id")]
     public int Id { get; set; }
 
     private string _symbol = string.Empty;
     
     [Required]
     [MaxLength(10)]
+    [Column("symbol")]
     public string Symbol
     {
         get => _symbol;
@@ -20,28 +23,33 @@ public class Holding
 
     [Required]
     [MaxLength(100)]
+    [Column("assetname")]
     public string AssetName { get; set; } = string.Empty;
 
     [Required]
     [MaxLength(20)]
+    [Column("assettype")]
     public string AssetType { get; set; } = string.Empty;
 
     [Required]
-    [Column(TypeName = "decimal(18,8)")]
+    [Column("quantity", TypeName = "decimal(18,8)")]
     public decimal Quantity { get; set; }
 
     [Required]
-    [Column(TypeName = "decimal(18,2)")]
+    [Column("purchaseprice", TypeName = "decimal(18,2)")]
     public decimal PurchasePrice { get; set; }
 
     [Required]
+    [Column("purchasedate")]
     public DateTime PurchaseDate { get; set; }
 
-    [Column(TypeName = "decimal(18,2)")]
+    [Column("currentprice", TypeName = "decimal(18,2)")]
     public decimal? CurrentPrice { get; set; }
 
+    [Column("lastpriceupdate")]
     public DateTime? LastPriceUpdate { get; set; }
 
+    [Column("createdat")]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // Calculated properties

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace InvestmentPortfolioTracker.Web.Data;
 
@@ -19,7 +20,7 @@ public class PortfolioDbContextFactory : IDesignTimeDbContextFactory<PortfolioDb
 
         // Build DbContextOptions
         var optionsBuilder = new DbContextOptionsBuilder<PortfolioDbContext>();
-        optionsBuilder.UseSqlServer(connectionString);
+        optionsBuilder.UseNpgsql(connectionString);
 
         return new PortfolioDbContext(optionsBuilder.Options);
     }
